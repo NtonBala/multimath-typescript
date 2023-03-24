@@ -1,5 +1,3 @@
-'use strict';
-
 const DEFAULT_PLAYERNAME = 'MultiMath Player';
 
 function startGame() {
