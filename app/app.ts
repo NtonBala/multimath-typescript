@@ -1,15 +1,12 @@
 const DEFAULT_PLAYERNAME = 'MultiMath Player';
 
+// * Starting a new game
 function startGame() {
-  // starting a new game
   const playerName: string | undefined = getInputValue('playername');
 
   logPlayer(playerName);
-  postScores(100, playerName);
-}
-
-function logPlayer(name: string = DEFAULT_PLAYERNAME): void {
-  console.log(`New game starting for player: ${name}`);
+  postScore(80, playerName);
+  postScore(-5, playerName);
 }
 
 function getInputValue(elementId: string): string | undefined {
@@ -22,10 +19,32 @@ function getInputValue(elementId: string): string | undefined {
   }
 }
 
-function postScores(score: number, playerName: string = DEFAULT_PLAYERNAME): void {
+function postScore(score: number, playerName: string = DEFAULT_PLAYERNAME): void {
+  let logger: (value: string) => void;
+
+  if (score < 0) {
+    logger = logError;
+  } else {
+    logger = logMessage;
+  }
+
   const scoreElement: HTMLElement | null = document.getElementById('postedScores');
 
   scoreElement!.innerText = `${score} - ${playerName}`;
+  logger(`Score: ${score}`);
 }
 
 document.getElementById('startGame')!.addEventListener('click', startGame);
+
+// * Loggers
+function logPlayer(name: string = DEFAULT_PLAYERNAME): void {
+  console.log(`New game starting for player: ${name}`);
+}
+
+function logMessage(message: string): void {
+  console.log(message);
+}
+
+function logError(err: string): void {
+  console.error(err);
+}
