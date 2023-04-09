@@ -49,14 +49,7 @@ function logError(err: string): void {
   console.error(err);
 }
 
-let myResult: Result = {
-  playerName: 'Marie',
-  score: 5,
-  problemCount: 5,
-  factor: 7,
-};
+const firstPlayer: Player = new Player();
 
-let player: Person = {
-  name: 'Daniel',
-  formatName: () => 'Dan',
-};
+firstPlayer.name = 'Lanier';
+console.log(firstPlayer.formatName());
