@@ -1,3 +1,5 @@
+/// <reference path="player.ts" />
+
 const DEFAULT_PLAYERNAME = 'MultiMath Player';
 
 // * Starting a new game

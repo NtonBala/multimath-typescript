@@ -1,5 +1,12 @@
+var Player = (function () {
+    function Player() {
+    }
+    Player.prototype.formatName = function () {
+        return this.name.toUpperCase();
+    };
+    return Player;
+}());
 var DEFAULT_PLAYERNAME = 'MultiMath Player';
-// * Starting a new game
 function startGame() {
     var playerName = getInputValue('playername');
     logPlayer(playerName);
@@ -29,7 +36,6 @@ function postScore(score, playerName) {
     logger("Score: ".concat(score));
 }
 document.getElementById('startGame').addEventListener('click', startGame);
-// * Loggers
 function logPlayer(name) {
     if (name === void 0) { name = DEFAULT_PLAYERNAME; }
     console.log("New game starting for player: ".concat(name));
@@ -43,3 +49,4 @@ function logError(err) {
 var firstPlayer = new Player();
 firstPlayer.name = 'Lanier';
 console.log(firstPlayer.formatName());
+//# sourceMappingURL=app.js.map
