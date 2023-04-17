@@ -1,57 +1,22 @@
 /// <reference path="player.ts" />
+/// <reference path="game.ts" />
 
-const DEFAULT_PLAYERNAME = 'MultiMath Player';
+let newGame: Game;
 
-// * Starting a new game
-function startGame() {
-  const playerName: string | undefined = getInputValue('playername');
+// add click handler to the start game button
+document.getElementById('startGame')!.addEventListener('click', () => {
+  const player: Player = new Player();
 
-  logPlayer(playerName);
-  postScore(80, playerName);
-  postScore(-5, playerName);
-}
+  player.name = Utility.getInputValue('playername');
 
-function getInputValue(elementId: string): string | undefined {
-  const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementId);
+  const problemCount: number = Number(Utility.getInputValue('problemCount'));
+  const factor: number = Number(Utility.getInputValue('factor'));
 
-  if (inputElement.value === '') {
-    return undefined;
-  } else {
-    return inputElement.value;
-  }
-}
+  newGame = new Game(player, problemCount, factor);
+  newGame.displayGame();
+});
 
-function postScore(score: number, playerName: string = DEFAULT_PLAYERNAME): void {
-  let logger: (value: string) => void;
-
-  if (score < 0) {
-    logger = logError;
-  } else {
-    logger = logMessage;
-  }
-
-  const scoreElement: HTMLElement | null = document.getElementById('postedScores');
-
-  scoreElement!.innerText = `${score} - ${playerName}`;
-  logger(`Score: ${score}`);
-}
-
-document.getElementById('startGame')!.addEventListener('click', startGame);
-
-// * Loggers
-function logPlayer(name: string = DEFAULT_PLAYERNAME): void {
-  console.log(`New game starting for player: ${name}`);
-}
-
-function logMessage(message: string): void {
-  console.log(message);
-}
-
-function logError(err: string): void {
-  console.error(err);
-}
-
-const firstPlayer: Player = new Player();
-
-firstPlayer.name = 'Lanier';
-console.log(firstPlayer.formatName());
+// add click handler to the calculate score button
+document.getElementById('calculate')!.addEventListener('click', () => {
+  newGame.calculateScore();
+});
