@@ -6,4 +6,4 @@ The project relates to [TypeScript 4: Getting Started](https://app.pluralsight.c
 
 Project is styled via [Bootstrap 5](https://getbootstrap.com/).
 
-Project uses `npm` as a package manager, to start the app run go to `app` folder, run `tsc` command and then run `npm run start`.
+Project uses `npm` as a package manager, to start the app run `npm start` command.
