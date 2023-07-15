@@ -15,44 +15,46 @@
       </div>
     </nav>
 
-    <div id="nameform">
-      <div>
-        <label for="playername">Player Name</label>
+    <div class="container-fluid">
+      <div id="nameform">
         <div>
-          <input type="text" id="playername" size="20" placeholder="Player Name" />
+          <label for="playername">Player Name</label>
+          <div>
+            <input type="text" id="playername" size="20" placeholder="Player Name" />
+          </div>
+        </div>
+
+        <div>
+          <label for="factor">Factor</label>
+          <div>
+            <input type="text" id="factor" size="20" value="5" placeholder="Factor" />
+          </div>
+        </div>
+
+        <div>
+          <label for="problemCount">Number of Problems</label>
+          <div>
+            <input type="text" id="problemCount" size="20" placeholder="Number of Problems" />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <button id="startGame" class="btn btn-primary">New Game</button>
+            <button id="calculate" class="btn btn-success" disabled>Calculate Score</button>
+          </div>
         </div>
       </div>
 
-      <div>
-        <label for="factor">Factor</label>
-        <div>
-          <input type="text" id="factor" size="20" value="5" placeholder="Factor" />
-        </div>
+      <div id="game"></div>
+
+      <div id="scores">
+        <h2>Scoreboard</h2>
+        <h4 id="postedScores">No scores yet</h4>
       </div>
 
-      <div>
-        <label for="problemCount">Number of Problems</label>
-        <div>
-          <input type="text" id="problemCount" size="20" placeholder="Number of Problems" />
-        </div>
-      </div>
-
-      <div>
-        <div>
-          <button id="startGame" class="btn btn-primary">New Game</button>
-          <button id="calculate" class="btn btn-success" disabled>Calculate Score</button>
-        </div>
-      </div>
+      <div id="messages"></div>
     </div>
-
-    <div id="game"></div>
-
-    <div id="scores">
-      <h2>Scoreboard</h2>
-      <h4 id="postedScores">No scores yet</h4>
-    </div>
-
-    <div id="messages"></div>
 
     <!-- add script tags here-->
     <script src="bundle.js"></script>
